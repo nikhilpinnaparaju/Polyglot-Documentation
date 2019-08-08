@@ -1,7 +1,7 @@
 !!Compilation
 
 +Pillar logo>figures/pillar.png|width=30+
-Welcome to Pillar's little user-guide !!
+The following is a simple introduction to test build.
 
 To write a book, you can create chapters and include them into ''book.pillar'' (see the ''book.pillar'' file)
 or directly edit the file.
