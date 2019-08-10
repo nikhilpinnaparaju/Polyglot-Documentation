@@ -1,16 +1,48 @@
-!!Edition and Templates
+!! Polyglot - Packages and Examples
 
-There is also a template system, you can find template in the folder ''_support/template''.
-Some template are already written, but if you want to have your own, you had two solutions:
--edit the existing template related to the format you want to change (recommanded)
--create your own template with its own name
+!!! Installation
+To install Polyglot, go to the Playground (Ctrl\+O\+W) in your fresh Pharo image and execute the following Metacello script (select it and press Do-it button or Ctrl\+D):
 
-You will found some template examples in ''_support/template'' folder to see how it works.
-The default template system is ''Mustache''.
+[[[language=smalltalk
+Metacello new
+  baseline: 'Polyglot';
+  repository: 'github://PolyMathOrg/Polyglot/src';
+  load.
+]]]
 
-Output directory's default name is ''book-result'' but you can change it in the pillar.conf file by editing the
-==OUTPUTDIRECTORY== variable
+In all keyboard shortcuts mentioned in this booklet the ''Ctrl'' key is for Windows and Linux. On Mac OS, use ''Cmd'' instead.
 
+!!!! Running the tests
 
-+>figures/pharo.png|width=30+
-+>figures/rmod.png|width=30+
+First thing you should do after installing Polyglot is open the Polyglot-Tests package in Test Runner (Ctrl\+O\+U) or System Browser (Ctrl\+O\+B) and make sure that all tests are passing. Polyglot is tested with around 100 unit tests which provide 90\% code coverage. If you see some failing tests, please go to the Polyglot repository on GitHub and open a related issue.
+
+!!! PGTokenizer
+
+''PGTokenizer'' is the tokenization object class in ''Polyglot''.
+
+!!!! isSpecial: 
+
+The ''isSpecial:'' method returns ''True'' or ''False'' depending on whether a particular character is a special character or not.
+
+==Usage== 
+[[[
+language=smalltalk
+|tokenizer|
+tokenizer := PGTokenizer new.
+tokenizer isSpecial: $?
+]]]
+should return ''True''.
+
+!!!! sentenceTokenize:
+
+Given a text body, ''sentenceTokenize:'' will return an array of sentences which will further be tokenized into words, that is an array of arrays.
+
+==Usage== 
+[[[
+language=smalltalk
+|tokenizer text|
+text := 'This is a test sentence? Use this as a sample for tokenization'.
+tokenizer := PGTokenizer new.
+tokenizer tokenize: text.
+]]]
+should return ==#(#('This' 'is' 'a' 'test' 'sentence' $?) #('Use' 'this' 'as' 'a' 'sample' 'for' 'tokenization'))==.
