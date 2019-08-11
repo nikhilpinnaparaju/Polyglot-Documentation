@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>nil</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+<link href="/booklet-Polyglot/html/_support/html/css/font-awesome.min.css" rel="stylesheet">
+<link href="/booklet-Polyglot/html/_support/html/css/nucleus.css" rel="stylesheet">
+<link href="/booklet-Polyglot/html/_support/html/css/flex.css" rel="stylesheet">
+<link rel="stylesheet" href="/booklet-Polyglot/html/_support/html/highlightjs/styles/default.css">
+<link rel="stylesheet" href="/booklet-Polyglot/html/_support/html/css/highlight-commands.css">
+<link rel="stylesheet" href="/booklet-Polyglot/html/_support/html/css/bootstrap.min.css">
+<script src="/booklet-Polyglot/html/_support/html/js/jquery-2.x.min.js"></script>
+<script src="/booklet-Polyglot/html/_support/html/highlightjs/highlight.pack.js"></script>
+<script src="/booklet-Polyglot/html/_support/html/js/highlight-commands.js"></script>
+<meta name="description" content="nil">
+nil<meta name="author" content="Nikhil Pinnaparaju">nil
+  </head>
+  <body>
+    <header>
+  <div class="logo">
+    <a class="baselink" href="/booklet-Polyglot/html">nil</a>
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+  
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+   		<li data-nav-id="123" class="dd-item">
+    		<a href="/booklet-Polyglot/html">
+		       <i class="fa fa-fw fa-home"></i>
+	    	</a>
+        </li>
+
+		
+		  <li class="dd-item ">
+			<div>
+			  <a href="">
+					
+			  </a>
+			  
+			</div>
+			  <ul class="dd-item">
+				
+			  </ul>
+		  
+		  </li>
+		
+    </ul>
+  </aside>
+
+  <section class="page">
+    
+	<h1>Documentation for Pharo Polyglot</h1>
+		
+	<h2>Polyglot - Packages and Examples</h2>
+
+<h3>Installation</h3>
+<p>
+To install Polyglot, go to the Playground (Ctrl+O+W) in your fresh Pharo image and execute the following Metacello script (select it and press Do-it button or Ctrl+D):
+</p>
+<figure><pre><code class="smalltalk">Metacello new
+  baseline: 'Polyglot';
+  repository: 'github://PolyMathOrg/Polyglot/src';
+  load.</code></pre><figcaption></figcaption></figure>
+
+<p>
+In all keyboard shortcuts mentioned in this booklet the <em>Ctrl</em> key is for Windows and Linux. On Mac OS, use <em>Cmd</em> instead.
+</p>
+<h4>Running the tests</h4>
+
+<p>
+First thing you should do after installing Polyglot is open the Polyglot-Tests package in Test Runner (Ctrl+O+U) or System Browser (Ctrl+O+B) and make sure that all tests are passing. Polyglot is tested with around 100 unit tests which provide 90% code coverage. If you see some failing tests, please go to the Polyglot repository on GitHub and open a related issue.
+</p>
+<h3>PGTokenizer</h3>
+
+<p>
+<em>PGTokenizer</em> is the tokenization object class in <em>Polyglot</em>.
+</p>
+<h4>isSpecial: </h4>
+
+<p>
+The <em>isSpecial:</em> method returns <em>True</em> or <em>False</em> depending on whether a particular character is a special character or not.
+</p>
+<p>
+<code>Usage</code> 
+</p><figure><pre><code>|tokenizer|
+tokenizer := PGTokenizer new.
+tokenizer isSpecial: $?</code></pre><figcaption></figcaption></figure>
+<p>
+should return <em>True</em>.
+</p>
+<h4>sentenceTokenize:</h4>
+
+<p>
+Given a text body, <em>sentenceTokenize:</em> will return an array of sentences from the text.
+</p>
+
+<p>
+<code>Usage</code>
+</p><figure><pre><code>|tokenizer text|
+text := 'This is a test sentence? Use this as a sample for tokenization'.
+tokenizer := PGTokenizer new.
+tokenizer sentenceTokenize: text.</code></pre><figcaption></figcaption></figure>
+<p>
+should return,
+<code>#('This is a test sentence?' ' Use this as a sample for tokenization')</code>
+</p>
+<h4>wordTokenize:</h4>
+
+<p>
+Given a text body, <em>wordTokenize:</em> will return an array of words from the text.
+</p>
+<p>
+<code>Usage</code>
+</p><figure><pre><code>|tokenizer text|
+text := 'This is a test sentence? Use this as a sample for tokenization'.
+tokenizer := PGTokenizer new.
+tokenizer wordTokenize: text.</code></pre><figcaption></figcaption></figure>
+<p>
+should return,
+<code>#('This' 'is' 'a' 'test' 'sentence' $? 'Use' 'this' 'as' 'a' 'sample' 'for' 'tokenization')</code>.
+</p>
+<h4>tokenize:</h4>
+
+<p>
+Given a text body, <em>tokenize:</em> will return an array of sentences which will further be tokenized into words, that is an array of arrays.
+</p>
+<p>
+The <em>nth</em> array would have the tokens of the <em>nth</em> sentence of the text.
+</p>
+<p>
+<code>Usage</code> 
+</p><figure><pre><code>|tokenizer text|
+text := 'This is a test sentence? Use this as a sample for tokenization'.
+tokenizer := PGTokenizer new.
+tokenizer tokenize: text.</code></pre><figcaption></figcaption></figure>
+<p>
+should return,
+<code>#(#('This' 'is' 'a' 'test' 'sentence' $?) #('Use' 'this' 'as' 'a' 'sample' 'for' 'tokenization'))</code>.
+</p>
+<h4>tokenizeFlatten:</h4>
+
+<p>
+This method is used to return an array of tokens all in a single array instead of an array of array with the <em>nth</em> array holding the tokens of the <em>nth</em> sentence of the text. (Utilizes the <em>wordTokenize:</em> method)
+</p>
+<p>
+<code>Usage</code> 
+</p><figure><pre><code>|tokenizer text|
+text := 'This is a test sentence? Use this as a sample for tokenization'.
+tokenizer := PGTokenizer new.
+tokenizer tokenizeFlatten: text.</code></pre><figcaption></figcaption></figure>
+<p>
+should return,
+<code>#('This' 'is' 'a' 'test' 'sentence' $? 'Use' 'this' 'as' 'a' 'sample' 'for' 'tokenization')</code>.
+</p>
+
+
+<h3>PGTF-IDF</h3>
+
+<p>
+<em>PGTF-IDF</em> contains a <em>PGTfIdf</em> object class. This class allows us to directly compute TF-IDF matrices.
+</p>
+<p>
+Direct usage is as follows,
+</p><figure><pre><code>|documents tfidf words t|
+documents := #(
+  (I am Sam)
+  (Sam I am)
+  (I 'don''t' like green eggs and ham)).
+  
+tfidf := PGTfIdf new.
+tfidf corpus: documents.</code></pre><figcaption></figcaption></figure>
+
+<p>
+This will return a <em>DataFrame</em> of term and tfidf scores per each document.
+</p>
+<table style="border: solid thin"><tr><td>#</td>
+<td>!Sam</td>
+<td>!like</td>
+<td>!am</td>
+<td>!don't</td>
+<td>!and</td>
+<td>!green</td>
+<td>!eggs</td>
+<td>!I</td>
+<td>!ham</td>
+</tr>
+<tr><td>1</td>
+<td>0.058697086351893746</td>
+<td>0.0</td>
+<td>0.058697086351893746</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr><td>2</td>
+<td>0.058697086351893746</td>
+<td>0.0</td>
+<td>0.058697086351893746</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr><td>3</td>
+<td>0.0</td>
+<td>0.06816017924566606</td>
+<td>0.0</td>
+<td>0.06816017924566606</td>
+<td>0.06816017924566606</td>
+<td>0.06816017924566606</td>
+<td>0.06816017924566606</td>
+<td>0.0</td>
+<td>0.06816017924566606</td>
+</tr>
+</table>
+
+
+<h4>corpus: </h4>
+<p>
+Allows user to send the corpus that they want to use to the <em>PGTfIdf</em> class (each document should be an array and corpus to be passed as an array of arrays).
+<code>Usage</code>
+</p><figure><pre><code>|documents tfidf words t|
+documents := #(
+  (I am Sam)
+  (Sam I am)
+  (I 'don''t' like green eggs and ham)).
+  
+tfidf := PGTfIdf new.
+tfidf corpus: documents.</code></pre><figcaption></figcaption></figure>
+
+<p>
+<code>Result</code>
+</p><table style="border: solid thin"><tr><td>#</td>
+<td>!Sam</td>
+<td>!like</td>
+<td>!am</td>
+<td>!don't</td>
+<td>!and</td>
+<td>!green</td>
+<td>!eggs</td>
+<td>!I</td>
+<td>!ham</td>
+</tr>
+<tr><td>1</td>
+<td>0.058697086351893746</td>
+<td>0.0</td>
+<td>0.058697086351893746</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr><td>2</td>
+<td>0.058697086351893746</td>
+<td>0.0</td>
+<td>0.058697086351893746</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr><td>3</td>
+<td>0.0</td>
+<td>0.06816017924566606</td>
+<td>0.0</td>
+<td>0.06816017924566606</td>
+<td>0.06816017924566606</td>
+<td>0.06816017924566606</td>
+<td>0.06816017924566606</td>
+<td>0.0</td>
+<td>0.06816017924566606</td>
+</tr>
+</table>
+
+<h4>corpus</h4>
+<p>
+Allows user to get the corpus used to compute Tf-Idf scores.
+</p>
+<p>
+<code>Usage</code>
+</p><figure><pre><code>|documents tfidf words t|
+documents := #(
+  (I am Sam)
+  (Sam I am)
+  (I 'don''t' like green eggs and ham)).
+  
+tfidf := PGTfIdf new.
+tfidf corpus: documents.</code></pre><figcaption></figcaption></figure>
+
+<p>
+The return should be the same as the <em>documents</em> object in the code snippet above, that is,
+</p><figure><pre><code>  #( (I am Sam) (Sam I am) (I 'don''t' like green eggs and ham)).</code></pre><figcaption></figcaption></figure>
+
+
+  </section>
+
+</article>
+
+<footer>
+
+<div class="footline">
+    <div class="github-link">
+      <a href="" target="blank"><i class="fa fa-code-fork"></i>Github</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/booklet-Polyglot/html/_support/html/js/clipboard.min.js"></script>
+
+<link href="/booklet-Polyglot/html/_support/html/css/featherlight.min.css" rel="stylesheet">
+<script src="/booklet-Polyglot/html/_support/html/js/featherlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script src="/booklet-Polyglot/html/_support/html/js/flex.js"></script>
+<!-- Prettify annotated paragraphs-->
+    <script src="/booklet-Polyglot/html_support/html/js/annotated-paragraphs.js"></script>
+
+  </body>
+</html>

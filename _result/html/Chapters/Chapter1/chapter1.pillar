@@ -1,0 +1,32 @@
+!! Introduction
+
+Natural language Processing (abbreviated as NLP) is the subfield of Computer science that utilizes the application of computational techniques to the analysis and synthesis of natural language and speech.
+
+''Polyglot'' offers basic NLP functionality like tokenization, stemming, POS Tagging and several other tools with easily usable interfaces and good documentation for anyone interested in doing NLP in Pharo.
+
+The aim of this project is to serve as a base for anyone to build upon thereby improving the library and getting more and more people interested and involved in the project.
+
+
+
+!!! What is Pharo?
+
+Pharo is a dynamic, purely object-oriented programming language (everything is an object) in the tradition of Smalltalk. But it is also a powerful development environment, focused on simplicity and immediate feedback. Its entire syntax fits on a postcard, and coding can be done directly in the debugger. Pharo has super cool tools that empower you and make you highly efficient.
+
+Pharo's goal is to deliver a clean, innovative, free and open-source immersive environment. By providing a stable and small core system, excellent development tools, and maintained releases, Pharo is an attractive platform to build and deploy mission-critical applications.
+
+Pharo fosters a healthy ecosystem developed from both private and commercial contributors who advance and maintain the core system and its external packages. More information about Pharo is available at http://www.pharo.org/. If you are new to Pharo, I suggest you to take Pharo MOOC${footnote:note=https://mooc.pharo.org/}$ or read Pharo by Example${footnote:note=https://books.pharo.org/updated-pharo-by-example/}$ book.
+
+Polyglot was tested on stable versions of Pharo 6.1 and Pharo 7.0, as well as the development version of Pharo 8. Through the continuous integration (CI) and 90\% code coverage by unit tests, we try to make sure that Polyglot is working well on every latest stable and development version of Pharo on all major operating systems: Linux, Mac OS, and Windows, as well as both 32-bit and 64-bit architectures.
+
+So before moving on to the next chapter, go to *https://pharo.org/download* and get yourself the latest Pharo. I strongly suggest that you try out all the examples as you read this booklet. It will help you understand what data frames are and how they can be used.
+
+
+!!! How to contribute?
+
+Polyglot is an open-source project released under the MIT public license. Although the original codebase was written by me (Nikhil Pinnaparaju), Polyglot is a collaborative effort of many people who helped me with their advice, shared their ideas, reported issues, and suggested how to resolve them. There are many ways in which you can help make Polyglot better.
+
+If you want to implement new functionality or improve the existing one by rewriting some methods or fixing a bug, you can fork the Polyglot repository on GitHub, make your changes, and create a pull request.
+
+But contributions can be more simple and less time consuming. You can report a bug, suggest a better API, or request new features for Polyglot. All that can be done by creating dedicated issues on in Polyglot's repository on GitHub.
+
+Positive feedback is also very important. It is always very encouraging to hear how people use your project. So if you want to share your experience of working or just playing with Polyglot, you can write about it on social media using ==#Pharo== and ==#PharoPolyglot== hashtags.

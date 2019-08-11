@@ -154,5 +154,5 @@ tfidf corpus: documents.
 
 The return should be the same as the ''documents'' object in the code snippet above, that is,
 [[[
-  #( (I am Sam) (Sam I am) (I 'don''t' like green eggs and ham) ).
+  #( (I am Sam) (Sam I am) (I 'don''t' like green eggs and ham)).
 ]]]
