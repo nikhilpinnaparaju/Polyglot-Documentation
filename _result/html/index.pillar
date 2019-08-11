@@ -1,7 +1,8 @@
 !Documentation for Pharo Polyglot
 
 
-${inputFile:path=Chapters/Chapter1/chapter1.pillar}$
-${inputFile:path=Chapters/Chapter2/chapter2.pillar}$
-
-
+${inputFile:path=Chapters/Introduction/doc.pillar}$
+${inputFile:path=Chapters/Installation/doc.pillar}$
+${inputFile:path=Chapters/Tokenization/doc.pillar}$
+${inputFile:path=Chapters/TFIDF/doc.pillar}$
+${inputFile:path=Chapters/Stemmer/doc.pillar}$

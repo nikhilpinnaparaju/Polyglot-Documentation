@@ -1,0 +1,17 @@
+!! Polyglot - Installation
+
+!!! Installation
+To install Polyglot, go to the Playground (Ctrl\+O\+W) in your fresh Pharo image and execute the following Metacello script (select it and press Do-it button or Ctrl\+D):
+
+[[[language=smalltalk
+Metacello new
+  baseline: 'Polyglot';
+  repository: 'github://PolyMathOrg/Polyglot/src';
+  load.
+]]]
+
+In all keyboard shortcuts mentioned in this booklet the ''Ctrl'' key is for Windows and Linux. On Mac OS, use ''Cmd'' instead.
+
+!!!! Running the tests
+
+First thing you should do after installing Polyglot is open the Polyglot-Tests package in Test Runner (Ctrl\+O\+U) or System Browser (Ctrl\+O\+B) and make sure that all tests are passing. Polyglot is tested with around 100 unit tests which provide 90\% code coverage. If you see some failing tests, please go to the Polyglot repository on GitHub and open a related issue.

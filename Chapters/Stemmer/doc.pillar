@@ -1,0 +1,23 @@
+!! Package - PGStemmer
+
+!!! Class - PGPorterStemmer
+
+The ''PGPorterStemmer'' can be used to perform stemming in English.
+As simple as,
+[[[
+PGPorterStemmer stemOf: 'fishing'
+]]]
+
+which returns,
+=='fish'==
+
+!!!! for:
+This is a class side method.
+Sets the string that we will be operating on,
+
+[[[
+    PGPorterStemmer for: 'fishing'
+]]]
+
+this will return the instance of PGPorterStemmer that will perform stemming for us,
+=="a PGPorterStemmer"==

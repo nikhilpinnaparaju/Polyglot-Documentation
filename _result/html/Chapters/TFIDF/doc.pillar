@@ -1,0 +1,84 @@
+!! Package - PGTF-IDF
+
+!!! Class - PGTfIdf
+''PGTF-IDF'' contains a ''PGTfIdf'' object class. This class allows us to directly compute TF-IDF matrices.
+
+Direct usage is as follows,
+[[[
+|documents tfidf words t|
+documents := #(
+  (I am Sam)
+  (Sam I am)
+  (I 'don''t' like green eggs and ham)).
+  
+tfidf := PGTfIdf new.
+tfidf corpus: documents.
+]]]
+
+This will return a ''DataFrame'' of term and tfidf scores per each document.
+
+| # | !Sam | !like | !am | !don't | !and | !green | !eggs | !I | !ham
+| 1 | 0.058697086351893746 | 0.0 | 0.058697086351893746 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0
+| 2 | 0.058697086351893746 | 0.0 | 0.058697086351893746 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0
+| 3 | 0.0 | 0.06816017924566606 | 0.0 | 0.06816017924566606 | 0.06816017924566606 | 0.06816017924566606 | 0.06816017924566606 | 0.0 | 0.06816017924566606
+
+
+!!!! corpus: 
+Allows user to send the corpus that they want to use to the ''PGTfIdf'' class (each document should be an array and corpus to be passed as an array of arrays).
+==Usage==
+[[[
+|documents tfidf words t|
+documents := #(
+  (I am Sam)
+  (Sam I am)
+  (I 'don''t' like green eggs and ham)).
+  
+tfidf := PGTfIdf new.
+tfidf corpus: documents.
+]]] 
+
+==Result==
+| # | !Sam | !like | !am | !don't | !and | !green | !eggs | !I | !ham
+| 1 | 0.058697086351893746 | 0.0 | 0.058697086351893746 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0
+| 2 | 0.058697086351893746 | 0.0 | 0.058697086351893746 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0
+| 3 | 0.0 | 0.06816017924566606 | 0.0 | 0.06816017924566606 | 0.06816017924566606 | 0.06816017924566606 | 0.06816017924566606 | 0.0 | 0.06816017924566606
+
+!!!! corpus
+Allows user to get the corpus used to compute Tf-Idf scores.
+
+==Usage==
+[[[
+|documents tfidf words t|
+documents := #(
+  (I am Sam)
+  (Sam I am)
+  (I 'don''t' like green eggs and ham)).
+  
+tfidf := PGTfIdf new.
+tfidf corpus: documents.
+]]] 
+
+The return should be the same as the ''documents'' object in the code snippet above, that is,
+[[[
+  #( (I am Sam) (Sam I am) (I 'don''t' like green eggs and ham) ).
+]]]
+
+
+!!!! buildVocab
+
+From the corpus passed to the ''PGTfIdf'' class instance, all the unique words are obtained.
+
+[[[
+|documents tfidf words t|
+documents := #(
+  (I am Sam)
+  (Sam I am)
+  (I 'don''t' like green eggs and ham)).
+  
+tfidf := PGTfIdf new.
+tfidf corpus: documents.
+tfidf buildVocab.
+]]]
+
+Will return,
+==a Set(#Sam #like #am 'don''t' #and #green #eggs #I #ham)==

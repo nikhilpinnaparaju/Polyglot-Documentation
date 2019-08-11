@@ -105,7 +105,7 @@ But contributions can be more simple and less time consuming. You can report a b
 Positive feedback is also very important. It is always very encouraging to hear how people use your project. So if you want to share your experience of working or just playing with Polyglot, you can write about it on social media using <code>#Pharo</code> and <code>#PharoPolyglot</code> hashtags.
 
 </p>
-<h2>Polyglot - Packages and Examples</h2>
+<h2>Polyglot - Installation</h2>
 
 <h3>Installation</h3>
 <p>
@@ -124,7 +124,9 @@ In all keyboard shortcuts mentioned in this booklet the <em>Ctrl</em> key is for
 <p>
 First thing you should do after installing Polyglot is open the Polyglot-Tests package in Test Runner (Ctrl+O+U) or System Browser (Ctrl+O+B) and make sure that all tests are passing. Polyglot is tested with around 100 unit tests which provide 90% code coverage. If you see some failing tests, please go to the Polyglot repository on GitHub and open a related issue.
 </p>
-<h3>PGTokenizer</h3>
+<h2>Package - PGTokenizer</h2>
+
+<h3>Class - PGTokenizer</h3>
 
 <p>
 <em>PGTokenizer</em> is the tokenization object class in <em>Polyglot</em>.
@@ -206,10 +208,9 @@ tokenizer tokenizeFlatten: text.</code></pre><figcaption></figcaption></figure>
 should return,
 <code>#('This' 'is' 'a' 'test' 'sentence' $? 'Use' 'this' 'as' 'a' 'sample' 'for' 'tokenization')</code>.
 </p>
+<h2>Package - PGTF-IDF</h2>
 
-
-<h3>PGTF-IDF</h3>
-
+<h3>Class - PGTfIdf</h3>
 <p>
 <em>PGTF-IDF</em> contains a <em>PGTfIdf</em> object class. This class allows us to directly compute TF-IDF matrices.
 </p>
@@ -352,11 +353,53 @@ tfidf corpus: documents.</code></pre><figcaption></figcaption></figure>
 
 <p>
 The return should be the same as the <em>documents</em> object in the code snippet above, that is,
-</p><figure><pre><code>  #( (I am Sam) (Sam I am) (I 'don''t' like green eggs and ham)).</code></pre><figcaption></figcaption></figure>
+</p><figure><pre><code>  #( (I am Sam) (Sam I am) (I 'don''t' like green eggs and ham) ).</code></pre><figcaption></figcaption></figure>
 
+
+<h4>buildVocab</h4>
+
+<p>
+From the corpus passed to the <em>PGTfIdf</em> class instance, all the unique words are obtained.
 </p>
+<figure><pre><code>|documents tfidf words t|
+documents := #(
+  (I am Sam)
+  (Sam I am)
+  (I 'don''t' like green eggs and ham)).
+  
+tfidf := PGTfIdf new.
+tfidf corpus: documents.
+tfidf buildVocab.</code></pre><figcaption></figcaption></figure>
 
+<p>
+Will return,
+==a Set(#Sam #like #am 'don''t' #and #green #eggs #I #ham)==
+</p>
+<h2>Package - PGStemmer</h2>
 
+<h3>Class - PGPorterStemmer</h3>
+
+<p>
+The <em>PGPorterStemmer</em> can be used to perform stemming in English.
+As simple as,
+</p><figure><pre><code>PGPorterStemmer stemOf: 'fishing'</code></pre><figcaption></figcaption></figure>
+
+<p>
+which returns,
+<code>'fish'</code>
+</p>
+<h4>for:</h4>
+<p>
+This is a class side method.
+Sets the string that we will be operating on,
+</p>
+<figure><pre><code>    PGPorterStemmer for: 'fishing'</code></pre><figcaption></figcaption></figure>
+
+<p>
+this will return the instance of PGPorterStemmer that will perform stemming for us,
+<code>&quot;a PGPorterStemmer&quot;</code>
+</p>
+</p>
 <hr></hr>
 <sup id="footnote1">[1] https://mooc.pharo.org/</sup><br/>
 <sup id="footnote2">[2] https://books.pharo.org/updated-pharo-by-example/</sup><br/>
