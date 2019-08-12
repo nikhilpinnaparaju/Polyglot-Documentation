@@ -21,3 +21,42 @@ Sets the string that we will be operating on,
 
 this will return the instance of PGPorterStemmer that will perform stemming for us,
 =="a PGPorterStemmer"==
+
+!!!! stemOf:
+This is a class side method.
+Returns the stem of the string that we are operating on,
+
+[[[
+PGPorterStemmer stemOf: 'fishing'
+]]]
+
+which returns,
+=='fish'==
+
+!!!! step1a
+Following the steps of the porter stemmer algorithm, the ''step1a'' method applies step1a on our lowercased string. The full algorithm can be found here http://snowball.tartarus.org/algorithms/porter/stemmer.html .
+Returns the stem of the string that we are operating on,
+
+[[[
+|s|
+
+s := PGPorterStemmer for: 'fishing'.
+s step1a.
+]]]
+
+this will return the instance of PGPorterStemmer that will perform stemming for us,
+=="a PGPorterStemmer"== which will show us what the current form of the word is after applying step1a to our initial string.
+
+!!!! string
+
+Returns the current form of the string in the instance of ==PGPorterStemmer==.
+[[[
+|s|
+
+s := PGPorterStemmer for: 'fishing'.
+s step1b string.
+]]]
+
+will return,
+=='fish'==
+as that is the form the word after ''step1b'' is applied.

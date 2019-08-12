@@ -1,0 +1,95 @@
+!! Package - PGLanguageModel
+
+!!! Class - PGLanguageModel
+
+The ''PGLanguageModel'' class can be used to do language modelling tasks in English.
+
+The language model takes in an array of tokens, and with Polyglot it becomes as simple as the following,
+
+[[[
+|LM|
+
+LM := PGLanguageModel new.
+LM trainOn: #('this' 'is' 'an' 'example') order: 3.
+]]]
+
+but a more realistic example would be the following, let's say we have a large of text and we want to train a language model on this data.
+First, we would need to load this text file into Pharo,
+
+[[[
+|file brown tokenizer tokens LM temp|
+
+"Loading the Data into our Pharo image"
+file := <path_to_training_corpus> asFileReference.
+brown := file contents.
+
+"Converting raw text into an array of tokens"
+tokenizer := PGTokenizer new.
+tokens := tokenizer tokenizeFlatten: brown.
+
+"Training a language model on our tokenized file"
+LM := PGLanguageModel new.
+LM trainOn: tokens order: 3.
+]]]
+
+!!!! trainOn: order:
+This method is seen in the examples above. This trains a language model on based on the data and the order we input. 
+If the order given is 3 the language model is trained on trigrams and if 4 then trained on tetragrams and so on.
+
+[[[
+|file brown tokenizer tokens LM temp|
+
+"Loading the Data into our Pharo image"
+file := <path_to_training_corpus> asFileReference.
+brown := file contents.
+
+"Converting raw text into an array of tokens"
+tokenizer := PGTokenizer new.
+tokens := tokenizer tokenizeFlatten: brown.
+
+"Training a language model on our tokenized file"
+LM := PGLanguageModel new.
+LM trainOn: tokens order: 3.
+]]]
+
+!!!! trainData
+Returns the array of tokens that we trained the language model on.
+
+[[[
+|LM|
+LM := PGLanguageModel new.
+LM trainOn: #('This' 'is' 'an' 'example') order: 3.
+LM trainData .
+]]]
+
+will return our training data which is,
+==#('this' 'is' 'an' 'example')==.
+
+!!!! topNgrams:
+Let's say that we wanted to know what the most frequently seen ngrams in our data is. We can do that by the following,
+
+Assume we want the most frequent bigrams and counts in this toy example,
+[[[
+|LM|
+LM := PGLanguageModel new.
+LM trainOn: #('This' 'is' 'an' 'example' '.' 'this' 'is' 'the' 'second' 'sentence') order: 3.
+LM topNgrams: 2.
+]]]
+
+This returns,
+==an Array(2->PGn-gram(this is) 1->PGn-gram(is the) 1->PGn-gram(example .) 1->PGn-gram(. this) 1->PGn-gram(is an) 1->PGn-gram(an example) 1->PGn-gram(the second) 1->PGn-gram(second sentence))==
+We can see that "this is" is the most common bigram and manually verify from the data above.
+
+!!!! topNgrams: k:
+Now let's say that we wanted to know what the top ''k'' seen ngrams in our data is. We can do that by the following,
+
+Assume we want the 3 most freqent bigrams and counts in this toy example,
+[[[
+|LM|
+LM := PGLanguageModel new.
+LM trainOn: #('This' 'is' 'an' 'example' '.' 'this' 'is' 'the' 'second' 'sentence') order: 3.
+LM topNgrams: 2 k:3 .
+]]]
+
+This returns,
+==an Array(2->PGn-gram(this is) 1->PGn-gram(is the) 1->PGn-gram(example .))==
