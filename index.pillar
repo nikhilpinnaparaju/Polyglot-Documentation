@@ -7,3 +7,4 @@ ${inputFile:path=Chapters/Tokenization/doc.pillar}$
 ${inputFile:path=Chapters/TFIDF/doc.pillar}$
 ${inputFile:path=Chapters/Stemmer/doc.pillar}$
 ${inputFile:path=Chapters/LanguageModel/doc.pillar}$
+${inputFile:path=Chapters/Metrics/doc.pillar}$

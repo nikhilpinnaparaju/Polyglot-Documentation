@@ -4,6 +4,7 @@
 
 The ''PGPorterStemmer'' can be used to perform stemming in English.
 As simple as,
+==Usage== 
 [[[
 PGPorterStemmer stemOf: 'fishing'
 ]]]
@@ -15,6 +16,7 @@ which returns,
 This is a class side method.
 Sets the string that we will be operating on,
 
+==Usage== 
 [[[
     PGPorterStemmer for: 'fishing'
 ]]]
@@ -25,7 +27,7 @@ this will return the instance of PGPorterStemmer that will perform stemming for 
 !!!! stemOf:
 This is a class side method.
 Returns the stem of the string that we are operating on,
-
+==Usage== 
 [[[
 PGPorterStemmer stemOf: 'fishing'
 ]]]
@@ -36,7 +38,7 @@ which returns,
 !!!! step1a
 Following the steps of the porter stemmer algorithm, the ''step1a'' method applies step1a on our lowercased string. The full algorithm can be found here http://snowball.tartarus.org/algorithms/porter/stemmer.html .
 Returns the stem of the string that we are operating on,
-
+==Usage== 
 [[[
 |s|
 
@@ -50,6 +52,7 @@ this will return the instance of PGPorterStemmer that will perform stemming for 
 !!!! string
 
 Returns the current form of the string in the instance of ==PGPorterStemmer==.
+==Usage== 
 [[[
 |s|
 

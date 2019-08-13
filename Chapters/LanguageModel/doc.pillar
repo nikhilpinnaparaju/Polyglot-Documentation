@@ -5,7 +5,7 @@
 The ''PGLanguageModel'' class can be used to do language modelling tasks in English.
 
 The language model takes in an array of tokens, and with Polyglot it becomes as simple as the following,
-
+==Usage== 
 [[[
 |LM|
 
@@ -15,7 +15,7 @@ LM trainOn: #('this' 'is' 'an' 'example') order: 3.
 
 but a more realistic example would be the following, let's say we have a large of text and we want to train a language model on this data.
 First, we would need to load this text file into Pharo,
-
+==Usage== 
 [[[
 |file brown tokenizer tokens LM temp|
 
@@ -35,7 +35,7 @@ LM trainOn: tokens order: 3.
 !!!! trainOn: order:
 This method is seen in the examples above. This trains a language model on based on the data and the order we input. 
 If the order given is 3 the language model is trained on trigrams and if 4 then trained on tetragrams and so on.
-
+==Usage== 
 [[[
 |file brown tokenizer tokens LM temp|
 
@@ -54,7 +54,7 @@ LM trainOn: tokens order: 3.
 
 !!!! trainData
 Returns the array of tokens that we trained the language model on.
-
+==Usage== 
 [[[
 |LM|
 LM := PGLanguageModel new.
@@ -69,6 +69,7 @@ will return our training data which is,
 Let's say that we wanted to know what the most frequently seen ngrams in our data is. We can do that by the following,
 
 Assume we want the most frequent bigrams and counts in this toy example,
+==Usage== 
 [[[
 |LM|
 LM := PGLanguageModel new.
@@ -84,6 +85,7 @@ We can see that "this is" is the most common bigram and manually verify from the
 Now let's say that we wanted to know what the top ''k'' seen ngrams in our data is. We can do that by the following,
 
 Assume we want the 3 most freqent bigrams and counts in this toy example,
+==Usage== 
 [[[
 |LM|
 LM := PGLanguageModel new.

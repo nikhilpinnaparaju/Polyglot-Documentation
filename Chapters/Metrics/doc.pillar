@@ -1,0 +1,43 @@
+!! Package - PGMetrics
+
+!!! Class - Array (Extension)
+Commonly used similarity metrics are implemented in ''Polyglot'' and is an extension of the ''Array'' subclass. 
+
+!!!! cosineSimilarity:
+Cosine similarity metric finds the normalized dot product of the two attributes. By determining the cosine similarity, we would effectively try to find the cosine of the angle between the two objects. The cosine of 0° is 1, and it is less than 1 for any other angle.
+This is as simple as,
+==Usage== 
+[[[
+#(3 45 7 2) cosineSimilarity: #(2 54 13 15).
+]]]
+This results in an answer of ==0.9722==
+
+!!!! elementwiseProd:
+Elementwise product is that you multiply the elements in corresponding positions in an array with each other.
+This is done as,
+==Usage== 
+[[[
+#(1 2 3) elementwiseProd: #(3 4 5)
+]]]
+which returns,
+==#(3 8 15)==
+
+!!!! euclideanDistance:
+The Euclidean distance measures the length of a line segment connecting the two points. It is the most intuitive way of representing distance between two points.
+Done as,
+==Usage== 
+[[[
+#(0 3 4 5) euclideanDistance: #(7 6 3 -1).
+]]]
+which returns,
+==9.746794344808963==
+
+!!!! manhattanDistance:
+Manhattan distance is a metric in which the distance between two points is the sum of the absolute differences of their Cartesian coordinates. In a simple way of saying it is the total sum of the difference between the x-coordinates and y-coordinates.
+This can be done as,
+==Usage== 
+[[[
+#(10 20 10) manhattanDistance: #(10 20 20)
+]]]
+which returns,
+==10==

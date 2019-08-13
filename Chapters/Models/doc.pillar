@@ -1,0 +1,16 @@
+!! Package - PGModels
+
+!!! Class - PGHiddenMarkovModel
+The class for working with HMMs in ''Polyglot''.
+
+!!!! withTransitions: andEmissions: andStates: andObservations:
+This method sets the 4 main parameters of any HMM and returns a HMM.
+
+==Usage== 
+[[[
+|hmm|
+hmm := PGHiddenMarkovModel new.
+hmm withTransitions: transitionProbabilities  andEmissions: emissionProbabilities andStates: hiddenStates asSet andObservations: trainTokens asSet.
+]]]
+
+This returns a HMM with these 4 main parameters.

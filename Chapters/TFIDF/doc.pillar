@@ -67,7 +67,7 @@ The return should be the same as the ''documents'' object in the code snippet ab
 !!!! buildVocab
 
 From the corpus passed to the ''PGTfIdf'' class instance, all the unique words are obtained.
-
+==Usage== 
 [[[
 |documents tfidf words t|
 documents := #(
